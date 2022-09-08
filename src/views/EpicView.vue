@@ -124,7 +124,6 @@ export default class EpicView extends Vue {
 }
 .card-title {
     color: wheat;
-    font-size: 1.8rem;
     font-weight: bold;
 }
 
