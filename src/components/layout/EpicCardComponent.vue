@@ -9,7 +9,6 @@
             height="300"
             @click="showModal"
         />
-        <h1 class="select-title">Carina Cliffs from the Webb Space</h1>
     </v-card>
 </template>
 

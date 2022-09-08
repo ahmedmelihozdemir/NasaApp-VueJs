@@ -84,7 +84,7 @@ export default class extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .card-row {
     display: flex;
     flex-direction: row;
