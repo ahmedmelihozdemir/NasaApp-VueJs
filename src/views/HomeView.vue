@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-container class="selection lighten-5 mb-6">
-            <v-row no-gutters style="height: 150px">
+            <v-row class="selection-row">
                 <v-col class="selection-cards">
                     <EpicCardComponent></EpicCardComponent>
                 </v-col>
@@ -36,12 +36,23 @@ export default class HomeView extends Vue {}
     margin: 1.5rem 0 2rem;
     color: #0b3d91;
 }
+.selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 0 20%;
+    border-radius: 10px;
+    &:hover {
+        transform: scale(1.1);
+        transition: all 0.8s ease;
+        cursor: pointer;
+    }
+}
 .selection-cards {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    margin: 5rem 1rem;
     .card {
         background-color: transparent;
         color: wheat;
@@ -84,7 +95,7 @@ export default class HomeView extends Vue {}
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px 0 0 20%;
+    margin: 10px 0 0 15%;
     border-radius: 10px;
     &:hover {
         transform: scale(1.1);

@@ -2,7 +2,7 @@
     <div>
         <v-container>
             <v-row class="card-row text-center">
-                <div class="card-selection">
+                <!-- <div class="card-selection">
                     <v-card
                         class="card mx-auto transparent opacity-0"
                         max-width="400"
@@ -12,6 +12,40 @@
                         <v-img
                             class="card-item"
                             :src="item.src"
+                            height="200px"
+                        ></v-img>
+                        <v-card-title class="card-title">
+                            <span class="card-title-span">Coordinate: </span>
+                            {{ epic[idx].centroid_coordinates }}
+                        </v-card-title>
+                        <v-card-title class="card-title">
+                            <span class="card-title-span">Sun Position: </span>
+                            {{ epic[idx].sun_j2000_position }}
+                        </v-card-title>
+                        <v-card-title class="card-title">
+                            <span class="card-title-span"
+                                >Lunar Position:
+                            </span>
+                            {{ epic[idx].lunar_j2000_position }}
+                        </v-card-title>
+                        <v-card-title class="card-title">
+                            <span class="card-title-span-date"
+                                >Date:{{ epic[idx].date }}
+                            </span>
+                        </v-card-title>
+                    </v-card>
+                </div> -->
+
+                <div class="card-selection">
+                    <v-card
+                        class="card mx-auto transparent opacity-0"
+                        max-width="400"
+                        v-for="(item, idx) in 10"
+                        :key="item"
+                    >
+                        <v-img
+                            class="card-item"
+                            :src="getImage(idx)"
                             height="200px"
                         ></v-img>
                         <v-card-title class="card-title">
@@ -45,32 +79,71 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import { NasaService } from "@/services/Nasa.service";
 import { IEpic } from "@/models/EpicModel.interface";
+/* import { IEpicImage } from "@/models/EpicModelImages.interface"; */
 
 @Component
 export default class extends Vue {
-    colors = ["red", "blue"];
-    cycle = false;
-    dates = ["First", "Second"];
     items = [
         {
-            src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906074843.png?api_key=DEMO_KEY",
         },
         {
-            src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
+            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906060041.png?api_key=DEMO_KEY",
         },
         {
-            src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
+            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906041238.png?api_key=DEMO_KEY",
         },
         {
-            src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
+            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906022436.png?api_key=DEMO_KEY",
         },
         {
-            src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
+            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906003634.png?api_key=DEMO_KEY",
+        },
+        {
+            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906093645.png?api_key=DEMO_KEY",
+        },
+        {
+            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906112447.png?api_key=DEMO_KEY",
+        },
+        {
+            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906131250.png?api_key=DEMO_KEY",
+        },
+        {
+            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906150052.png?api_key=DEMO_KEY",
+        },
+        {
+            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906164855.png?api_key=DEMO_KEY",
         },
     ];
 
+    dates(index: number): void {
+        let week = new Array();
+        let current = moment().subtract(1, "days");
+        for (let i = 0; i < 10; i++) {
+            week.push(current.format("DD/MM/YY"));
+            current = current.subtract(1, "days");
+        }
+        return week[index];
+    }
+
     private epicService = new NasaService();
     epic = [] as IEpic[];
+
+    /* epicImages = [] as IEpicImage[]; */
+    /* immageDate: any = this.$route.params.date; */
+    /* immageEpicImage: string = filter(this.immageDate, (item: any) => {
+        return item.image;
+    }); */
+
+     /* immageDate: any = this.dates(1);
+
+    immageEpicImage: string = this.epic[0].image;
+
+    immage = `https://api.nasa.gov/EPIC/archive/natural/${this.immageDate}/png/${this.immageEpicImage}.png?api_key=DEMO_KEY`; */
+
+    immage: string = "";
+    immageDate: string = "";
+    immageEpicImage:string = ""; 
 
     getEpicDetails() {
         this.epicService.getEpic().then((response) => {
@@ -78,8 +151,27 @@ export default class extends Vue {
         });
     }
 
+    /* getEpicImages() {
+        this.epicService.getEpicImages().then((response) => {
+            this.epicImages = response;
+        });
+    } */
+
+    getImage(index: number) {
+        this.immageDate = this.dates(index);
+        console.log(this.immageDate);
+        this.immageEpicImage = this.epic[index].image;
+        console.log(this.immageEpicImage);
+        this.immage = `https://api.nasa.gov/EPIC/archive/natural/${this.immageDate}/png/${this.immageEpicImage}.png?api_key=aaMInSluWQ32vsNqeLEaiqqzhAoAJK4J1Scxj1GG`;
+        console.log(this.epic);
+        return this.immage;
+    }
+
     mounted() {
         this.getEpicDetails();
+        this.dates(0);
+        this.getImage(0);
+        
     }
 }
 </script>
@@ -128,3 +220,6 @@ export default class extends Vue {
     }
 }
 </style>
+
+function moment() { throw new Error("Function not implemented."); } function
+moment() { throw new Error("Function not implemented."); }

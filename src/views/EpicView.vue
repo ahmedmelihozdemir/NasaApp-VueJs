@@ -16,7 +16,7 @@
                     <v-card-title class="card-title">
                         {{ dates(idx) }}
                     </v-card-title>
-                    <v-card-subtitle class="card-title">
+                    <v-card-subtitle class="card-subtitle">
                         {{ epic[idx].caption }}
                     </v-card-subtitle>
                 </v-card>
@@ -106,6 +106,32 @@ export default class EpicView extends Vue {
             transform: scale(1.08);
             transition: all 0.6s ease-in-out;
             cursor: pointer;
+        }
+        .card-title{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.0095em;
+            margin: 0.5rem 0 0.5rem;
+            color: #dc3329;
+            display: flex;
+            justify-content: center;
+            &:hover {
+                background-color: #0b3c918c;
+                border-radius: 10px;
+                
+            }
+        }
+        .card-subtitle{
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0.00938em;
+            margin: 0.5rem 0 0.5rem;
+            color: wheat;
+            display: flex;
+            justify-content: center;
         }
     }
 

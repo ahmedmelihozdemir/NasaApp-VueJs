@@ -39,7 +39,7 @@
             </v-btn>
 
             <div class="menu-select ml-3">
-                <v-menu offset-y>
+                <v-menu offset-y >
                     <template v-slot:activator="{ on }">
                         <v-app-bar-nav-icon v-on="on"></v-app-bar-nav-icon>
                     </template>
