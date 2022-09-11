@@ -19,3 +19,4 @@ export class HttpClientModel implements HttpClientInterface {
     }
 }
 export const HttpClient: HttpClientInterface = new HttpClientModel();
+

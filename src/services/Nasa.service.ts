@@ -7,7 +7,7 @@ export class NasaService {
       url: "https://api.nasa.gov/EPIC/api/natural?api_key=aaMInSluWQ32vsNqeLEaiqqzhAoAJK4J1Scxj1GG",
     };
     return HttpClient.get<IEpic[]>(epicRequest);
-  }
+  };
 }
 
 

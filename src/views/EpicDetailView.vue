@@ -2,40 +2,6 @@
     <div>
         <v-container>
             <v-row class="card-row text-center">
-                <!-- <div class="card-selection">
-                    <v-card
-                        class="card mx-auto transparent opacity-0"
-                        max-width="400"
-                        v-for="(item, idx) in items"
-                        :key="item"
-                    >
-                        <v-img
-                            class="card-item"
-                            :src="item.src"
-                            height="200px"
-                        ></v-img>
-                        <v-card-title class="card-title">
-                            <span class="card-title-span">Coordinate: </span>
-                            {{ epic[idx].centroid_coordinates }}
-                        </v-card-title>
-                        <v-card-title class="card-title">
-                            <span class="card-title-span">Sun Position: </span>
-                            {{ epic[idx].sun_j2000_position }}
-                        </v-card-title>
-                        <v-card-title class="card-title">
-                            <span class="card-title-span"
-                                >Lunar Position:
-                            </span>
-                            {{ epic[idx].lunar_j2000_position }}
-                        </v-card-title>
-                        <v-card-title class="card-title">
-                            <span class="card-title-span-date"
-                                >Date:{{ epic[idx].date }}
-                            </span>
-                        </v-card-title>
-                    </v-card>
-                </div> -->
-
                 <div class="card-selection">
                     <v-card
                         class="card mx-auto transparent opacity-0"
@@ -120,7 +86,7 @@ export default class extends Vue {
         let week = new Array();
         let current = moment().subtract(1, "days");
         for (let i = 0; i < 10; i++) {
-            week.push(current.format("DD/MM/YY"));
+            week.push(current.format("YYYY/MM/DD"));
             current = current.subtract(1, "days");
         }
         return week[index];
@@ -135,15 +101,9 @@ export default class extends Vue {
         return item.image;
     }); */
 
-     /* immageDate: any = this.dates(1);
-
-    immageEpicImage: string = this.epic[0].image;
-
-    immage = `https://api.nasa.gov/EPIC/archive/natural/${this.immageDate}/png/${this.immageEpicImage}.png?api_key=DEMO_KEY`; */
-
     immage: string = "";
     immageDate: string = "";
-    immageEpicImage:string = ""; 
+    immageEpicImage: string = "";
 
     getEpicDetails() {
         this.epicService.getEpic().then((response) => {
@@ -151,19 +111,11 @@ export default class extends Vue {
         });
     }
 
-    /* getEpicImages() {
-        this.epicService.getEpicImages().then((response) => {
-            this.epicImages = response;
-        });
-    } */
-
     getImage(index: number) {
-        this.immageDate = this.dates(index);
-        console.log(this.immageDate);
-        this.immageEpicImage = this.epic[index].image;
-        console.log(this.immageEpicImage);
+        this.immageDate = this.dates(0);
+        this.immageEpicImage = this.epic[0].image;
         this.immage = `https://api.nasa.gov/EPIC/archive/natural/${this.immageDate}/png/${this.immageEpicImage}.png?api_key=aaMInSluWQ32vsNqeLEaiqqzhAoAJK4J1Scxj1GG`;
-        console.log(this.epic);
+        /* console.log(this.epic); */
         return this.immage;
     }
 
@@ -171,7 +123,6 @@ export default class extends Vue {
         this.getEpicDetails();
         this.dates(0);
         this.getImage(0);
-        
     }
 }
 </script>

@@ -28,6 +28,11 @@ const routes: Array<RouteConfig> = [
     name: 'epic-detail',
     component: () => import('../views/EpicDetailView.vue')
   },
+  {
+    path: '/techport',
+    name: 'techport',
+    component: () => import('../views/TechportView.vue')
+  },
 ]
 
 const router = new VueRouter({
