@@ -95,12 +95,6 @@ export default class extends Vue {
     private epicService = new NasaService();
     epic = [] as IEpic[];
 
-    /* epicImages = [] as IEpicImage[]; */
-    /* immageDate: any = this.$route.params.date; */
-    /* immageEpicImage: string = filter(this.immageDate, (item: any) => {
-        return item.image;
-    }); */
-
     immage: string = "";
     immageDate: string = "";
     immageEpicImage: string = "";
@@ -112,7 +106,7 @@ export default class extends Vue {
     }
 
     getImage(index: number) {
-        this.immageDate = this.dates(0);
+        this.immageDate = this.dates(1);
         this.immageEpicImage = this.epic[0].image;
         this.immage = `https://api.nasa.gov/EPIC/archive/natural/${this.immageDate}/png/${this.immageEpicImage}.png?api_key=aaMInSluWQ32vsNqeLEaiqqzhAoAJK4J1Scxj1GG`;
         /* console.log(this.epic); */
@@ -171,6 +165,3 @@ export default class extends Vue {
     }
 }
 </style>
-
-function moment() { throw new Error("Function not implemented."); } function
-moment() { throw new Error("Function not implemented."); }
