@@ -43,7 +43,7 @@ export default class HomeView extends Vue {}
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 180px auto;
+        margin: 150px auto;
         width: 100%;
         max-width: 1000px;
     }
