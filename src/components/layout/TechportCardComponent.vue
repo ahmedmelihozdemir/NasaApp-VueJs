@@ -1,6 +1,6 @@
 <template>
   <v-card class="selection-card" outlined tile>
-      <h2 class="selection-card-title">Tecport Title</h2>
+      <h2 class="selection-card-title">TECHPORT</h2>
       <img
           src="@/assets/5052744416_353f737db7_o.jpg"
           alt="Vuetify Logo"

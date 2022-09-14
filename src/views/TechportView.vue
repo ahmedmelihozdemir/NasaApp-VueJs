@@ -14,16 +14,16 @@
                 dark
                 loading="true"
             >
-                <template v-slot:item.img_src="{ item }">
-                    <v-chip :color="getColor(item.img_src)" dark>
-                        {{ item.img_src }}
+                <template v-slot:item.id="{ item }">
+                    <v-chip :color="getColor(item.id)" dark>
+                        {{ item.id }}
                     </v-chip>
                 </template>
             </v-data-table>
         </v-row>
         <h2 class="tech-header">Mars Rover Photos</h2>
         <v-row class="photos-row">
-            <div v-for="(i, idx) in 4" :key="i">
+            <div v-for="(i, idx) in 4" :key="i" class="photos-div col-md-6 ml-0">
                 <img
                     class="mars-photos"
                     :src="techport[idx].img_src"
@@ -46,17 +46,13 @@ import { ITechport } from "@/models/TechportModel.interface";
 export default class TechportView extends Vue {
     headers = [
         { text: "Name", align: "start", sortable: true, value: "id" },
-        { text: "Id", value: "id" },
         { text: "Sol", value: "sol" },
-        { text: "Camera", value: "camera" },
         { text: "Earth Date", value: "earth_date" },
-        { text: "Rover", value: "rover" },
-        { text: "Image", value: "img_src" },
     ];
 
-    getColor(img_src) {
-        if (img_src.length > 60) return "green";
-        else if (img_src.length > 20) return "orange";
+    getColor(id: string|any[]) {
+        if (id.length > 6) return "green";
+        else if (id.length > 8) return "orange";
         else return "red";
     }
 
@@ -107,6 +103,23 @@ export default class TechportView extends Vue {
     align-items: center;
     margin: 30px auto;
     padding: 10px;
+    .photos-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        .mars-photos {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            &:hover {
+                transform: scale(1.1);
+                transition: all 0.8s ease;
+                cursor: pointer;
+                box-shadow: 0 0 10px 20px rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
 }
 .mars-photos {
     margin: 10px;

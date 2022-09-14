@@ -18,11 +18,8 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-
-div[data-app='true'] {
-  background: url("@/assets/earth-slide.jpeg") no-repeat center center fixed;
-  background-size: cover;
-  
+div[data-app="true"] {
+    background: url("@/assets/earth-slide.jpeg") no-repeat center center fixed;
+    background-size: cover;
 }
-
 </style>

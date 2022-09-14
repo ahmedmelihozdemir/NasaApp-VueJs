@@ -6,7 +6,7 @@
                     <v-card
                         class="card mx-auto transparent opacity-0"
                         max-width="400"
-                        v-for="(item, idx) in 10"
+                        v-for="(item, idx) in epic.length"
                         :key="item"
                     >
                         <v-img
@@ -45,43 +45,10 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import { NasaService } from "@/services/Nasa.service";
 import { IEpic } from "@/models/EpicModel.interface";
-/* import { IEpicImage } from "@/models/EpicModelImages.interface"; */
+
 
 @Component
 export default class extends Vue {
-    items = [
-        {
-            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906074843.png?api_key=DEMO_KEY",
-        },
-        {
-            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906060041.png?api_key=DEMO_KEY",
-        },
-        {
-            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906041238.png?api_key=DEMO_KEY",
-        },
-        {
-            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906022436.png?api_key=DEMO_KEY",
-        },
-        {
-            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906003634.png?api_key=DEMO_KEY",
-        },
-        {
-            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906093645.png?api_key=DEMO_KEY",
-        },
-        {
-            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906112447.png?api_key=DEMO_KEY",
-        },
-        {
-            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906131250.png?api_key=DEMO_KEY",
-        },
-        {
-            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906150052.png?api_key=DEMO_KEY",
-        },
-        {
-            src: "https://api.nasa.gov/EPIC/archive/natural/2022/09/06/png/epic_1b_20220906164855.png?api_key=DEMO_KEY",
-        },
-    ];
-
     dates(index: number): void {
         let week = new Array();
         let current = moment().subtract(1, "days");
@@ -95,9 +62,9 @@ export default class extends Vue {
     private epicService = new NasaService();
     epic = [] as IEpic[];
 
-    immage: string = "";
-    immageDate: string = "";
-    immageEpicImage: string = "";
+    immage = "";
+    immageDate = "";
+    immageEpicImage = "";
 
     getEpicDetails() {
         this.epicService.getEpic().then((response) => {
@@ -106,7 +73,7 @@ export default class extends Vue {
     }
 
     getImage(index: number) {
-        this.immageDate = this.dates(1);
+        this.immageDate = this.dates(0);
         this.immageEpicImage = this.epic[0].image;
         this.immage = `https://api.nasa.gov/EPIC/archive/natural/${this.immageDate}/png/${this.immageEpicImage}.png?api_key=aaMInSluWQ32vsNqeLEaiqqzhAoAJK4J1Scxj1GG`;
         /* console.log(this.epic); */

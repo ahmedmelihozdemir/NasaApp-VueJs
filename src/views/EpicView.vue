@@ -5,7 +5,7 @@
                 <v-card
                     class="epic-card mx-auto transparent"
                     max-width="344"
-                    v-for="(i, idx) in 7"
+                    v-for="(i, idx) in epic.length"
                     :key="i"
                 >
                     <v-img
@@ -38,7 +38,7 @@ export default class EpicView extends Vue {
     show = [false, false, false, false, false, false, false];
     items = [
         {
-            src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+            src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
         },
         {
             src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
@@ -107,8 +107,9 @@ export default class EpicView extends Vue {
             transition: all 0.6s ease-in-out;
             cursor: pointer;
         }
-        .card-title{
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        .card-title {
+            font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+                "Lucida Sans", Arial, sans-serif;
             font-size: 1.5rem;
             font-weight: 600;
             line-height: 1.2;
@@ -120,10 +121,9 @@ export default class EpicView extends Vue {
             &:hover {
                 background-color: #0b3c918c;
                 border-radius: 10px;
-                
             }
         }
-        .card-subtitle{
+        .card-subtitle {
             font-size: 1rem;
             font-weight: 400;
             line-height: 1.5;
@@ -167,4 +167,3 @@ export default class EpicView extends Vue {
     }
 }
 </style>
-

@@ -6,9 +6,6 @@
                     <EpicCardComponent></EpicCardComponent>
                 </v-col>
                 <v-col class="selection-cards col-md-4">
-                    <EpicCardComponent></EpicCardComponent>
-                </v-col>
-                <v-col class="selection-cards col-md-4">
                     <TechportCardComponent></TechportCardComponent>
                 </v-col>
             </v-row>
@@ -46,7 +43,7 @@ export default class HomeView extends Vue {}
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 0 auto;
+        margin: 180px auto;
         width: 100%;
         max-width: 1000px;
     }
