@@ -3,11 +3,19 @@ export interface IEpic {
   caption: string;
   image: string;
   version: string;
-  centroid_coordinates: string;
-  dscovr_j2000_position: string;
-  lunar_j2000_position: string;
-  sun_j2000_position: string;
+  centroid_coordinates: {
+    lat: number;
+    lon: number;
+  };
+  lunar_j2000_position: {
+    x: number;
+    y: number;
+    z: number;
+  };
+  sun_j2000_position: {
+    x: number;
+    y: number;
+    z: number;
+  };
   date: string;
-  coordinates: string;
-  available: boolean;
 }
