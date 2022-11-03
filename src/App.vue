@@ -1,8 +1,8 @@
 <template>
-    <v-app class="navbar">
-        <HeaderComponent></HeaderComponent>
-        <FooterComponent></FooterComponent>
-    </v-app>
+  <v-app class="navbar">
+    <HeaderComponent></HeaderComponent>
+    <FooterComponent></FooterComponent>
+  </v-app>
 </template>
 
 <script lang="ts">
@@ -11,18 +11,18 @@ import HeaderComponent from "@/components/layout/HeaderComponent.vue";
 import FooterComponent from "./components/layout/Footer.component.vue";
 
 export default Vue.extend({
-    name: "Home",
+  name: "Home",
 
-    components: {
-        HeaderComponent,
-        FooterComponent,
-    },
+  components: {
+    HeaderComponent,
+    FooterComponent,
+  },
 });
 </script>
 
 <style scoped lang="scss">
 div[data-app="true"] {
-    background: url("@/assets/earth-slide.jpeg") no-repeat center center fixed;
-    background-size: cover;
+  background: url("@/assets/earth-slide.jpeg") no-repeat center center fixed;
+  background-size: cover;
 }
 </style>
