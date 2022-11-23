@@ -3,6 +3,8 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import { NasaService } from "@/services/Nasa.service";
 import { IEpic } from "@/models/EpicModel.interface";
+var moment = require('moment');
+
 
 @Component
 export default class EpicView extends Vue {
@@ -49,8 +51,17 @@ export default class EpicView extends Vue {
   <div>
     <v-container class="epic-container">
       <v-row class="epic-row">
-        <v-card class="epic-card mx-auto transparent" max-width="344" v-for="(i, idx) in 7" :key="i">
-          <v-img :src="imageUrl[idx]" height="200px" @click="openEpics(idx)"></v-img>
+        <v-card
+          class="epic-card mx-auto transparent"
+          max-width="344"
+          v-for="(i, idx) in 7"
+          :key="i"
+        >
+          <v-img
+            :src="imageUrl[idx]"
+            height="200px"
+            @click="openEpics(idx)"
+          ></v-img>
           <v-card-title class="card-title">
             {{ dates(idx) }}
           </v-card-title>
@@ -79,7 +90,8 @@ export default class EpicView extends Vue {
       cursor: pointer;
     }
     .card-title {
-      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
       font-size: 1.5rem;
       font-weight: 600;
       line-height: 1.2;
