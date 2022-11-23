@@ -137,11 +137,3 @@ export default class EpicView extends Vue {
   }
 }
 </style>
-
-function moment() {
-  throw new Error("Function not implemented.");
-}
-
-function moment() {
-  throw new Error("Function not implemented.");
-}
