@@ -3,6 +3,7 @@
 } */
 
 export interface ITechport {
+  photos: ITechport[];
   camera: object;
   camera_name: string;
   earth_date: string;
