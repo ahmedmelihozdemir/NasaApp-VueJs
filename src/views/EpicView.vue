@@ -59,6 +59,7 @@ export default class EpicView extends Vue {
         </v-card>
       </v-row>
     </v-container>
+    <div></div>
   </div>
 </template>
 
@@ -136,3 +137,11 @@ export default class EpicView extends Vue {
   }
 }
 </style>
+
+function moment() {
+  throw new Error("Function not implemented.");
+}
+
+function moment() {
+  throw new Error("Function not implemented.");
+}
